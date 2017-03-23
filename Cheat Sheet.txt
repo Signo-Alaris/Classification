@@ -8,3 +8,6 @@ git push origin <BRANCH>
 
 git pull origin <BRANCH>
 -- Single message used to retrieve latest update to git server
+
+git checkout <BRANCH>
+-- Switch between the different branches in the repository

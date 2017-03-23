@@ -1,0 +1,10 @@
+git status
+-- Displays the differences between the current state of the repository and last pull git performed.
+
+git add --all
+git commit -m "MESSAGE"
+git push origin <BRANCH>
+-- All three messages are used to commit and push the changes you made locally up to the git server at whatever branch you tell it to. The message is used to identify what changes you made to the files in the commit e.g. "Added erosion morphology". This is handy when you have to backtrack through files.
+
+git pull origin <BRANCH>
+-- Single message used to retrieve latest update to git server

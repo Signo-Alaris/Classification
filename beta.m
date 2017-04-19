@@ -1,0 +1,44 @@
+clc; %clears command window
+clear all; %clears all variables
+close all; %closes all windows
+
+%Let the user select the image
+%thresholdFile = uigetfile('*.jpg; *.bmp; *.png');
+
+%Read in the selected image
+input = imread('Vehicles1.png');
+% input = imread('Vehicles2.png');
+% input = imread('Vehicles3.png');
+% input = imread('Vehicles4.png');
+% input = imread('Vehicles5.png');
+% input = imread('Vehicles6.png');
+% input = imread('Vehicles7.png');
+
+%Edge Filters
+EdgeVertical = [-1 0 1; -1 0 1; -1 0 1]/2;
+EdgeHorizontal = [-1 -1 -1; 0 0 0; 1 1 1]/2;
+
+%Convert image to double to allow for processing
+image = im2double(input);
+
+%Show Original Image
+subplot(3,2,1), imshow(image), title('Original');
+disp('Show Original Image');
+
+%Get height and width of image
+[H,W,D] = size(image);
+
+%Convert to Greyscale
+g = rgb2gray(image);
+
+outputVertical = conv2(g,EdgeVertical,'same');
+subplot(3,2,2), imshow(outputVertical), title('Vertical Output');
+
+outputHorizontal = conv2(g,EdgeHorizontal,'same');
+subplot(3,2,3), imshow(outputHorizontal), title('Horizontal Output');
+
+output = outputVertical + outputHorizontal;
+subplot(3,2,4), imshow(output), title('Combined Output');
+
+output = output - 0.5;
+subplot(3,2,4), imshow(output), title('Filtered Output');

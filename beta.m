@@ -1,6 +1,8 @@
 clc; %clears command window
 clear all; %clears all variables
 close all; %closes all windows
+disp('WELCOME! PLEASE SELECT YOUR VEHICLE IMAGE FILE!(.png, .jpg or .bmp)');
+disp('NOTE: PLEASE MAKE SURE THE VEHICLE IN YOUR IMAGE IS COMPLETELY INSIDE THE IMAGE AND IS NOT DISTORTED.');
 
 %Let the user select the image
 inputFile = uigetfile('*.jpg; *.bmp; *.png');
@@ -101,24 +103,24 @@ for i = 1:7
         result = wheelDistance/wheelRadius;
         
         if result < 14.6
-            disp('Car');
+            disp('YOUR VEHICLE IS A CAR!');
             vehicleType = 'Car';
         end
         
         if result > 14.6
-            disp('Bus');
+            disp('YOUR VEHICLE IS A BUS!');
             vehicleType = 'Bus';
         end
     end
     
     if noCenters(1, 1) > 2
-        disp('Truck');
+        disp('YOUR VEHICLE IS A TRUCK!');
         vehicleType = 'Truck';
     end
     
     if noCenters(1, 1) <= 1
-        disp('Photograph Obscured');
-        vehicleType = 'Photograph Obscured';
+        disp('PHOTOGRAPH OBSCURED, PLEASE TRY AGAIN');
+        vehicleType = 'PHOTOGRAPH OBSCURED';
     end
 end
 

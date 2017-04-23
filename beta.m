@@ -22,7 +22,7 @@ image = imcrop(image,[0 round(H/2) W H]);
 % Get height and width of images
 [H,W,D] = size(image);
 
-%Convert from RGB to greyscale
+%Convert from RGB to greyscale to allow for processing
 g = rgb2gray(image);
 
 % Find Vertical edges
@@ -49,7 +49,7 @@ output = outputVertical.*image;
 %Convert to hsv
 output = rgb2hsv(output);
 
-%Isolate tyres using HSV values
+%Isolate tyres using HSV values and place them in the bw image
 sat = 0.15;
 val = 0.6;
 bw = zeros(H,W,3);
